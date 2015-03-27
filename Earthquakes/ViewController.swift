@@ -33,6 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     var mainMoc: NSManagedObjectContext?
     
+    var deleteMoc: NSManagedObjectContext?
+    
     var dataList: [Quake] = [Quake]() // Empty array of quakes.
     
     // DO THIS FOR WITHOUT CORE DATA
@@ -49,10 +51,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         mainMoc = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         
+        deleteMoc = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        
         // Point to the parent MOC. Wrap in perform sync so that we ensure it's
         // on the main queue. Don't need to synce it's already on main queue.
         
         mainMoc?.parentContext = moc
+        
+        deleteMoc?.parentContext = moc
         
     }
     
@@ -106,6 +112,9 @@ class ViewController: UIViewController, UITableViewDataSource {
                 if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &jsonError) as? [AnyObject] {
                     
                     self.moc!.performBlock({ () -> Void in
+                        
+                        // Delete data
+                        self.deleteData()
                         
                         // Inside this for loop we will
                         for element in json {
@@ -202,7 +211,34 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func deleteData() {
         // We can add another MOC to do deletion.
+        self.deleteMoc?.performBlockAndWait({ () -> Void in
+            
+            let fetchRequest = NSFetchRequest()
+            let quake = NSEntityDescription.entityForName("Quake", inManagedObjectContext: self.deleteMoc!)
+            fetchRequest.entity = quake
+            var fetchError: NSError?
+            let quakes = self.deleteMoc!.executeFetchRequest(fetchRequest, error: &fetchError) as [Quake] // Array of quakes
+            
+            for quake in quakes {
+                // This deletes the object in the 'deleteMoc'. 
+                // However, we need to save TWICE. The first save saves the objects in MOC. The second save saves it in the persistent store.
+                self.deleteMoc?.deleteObject(quake)
+            }
+            
+            var deleteMocError: NSError?
+            if self.deleteMoc!.save(&deleteMocError) { // if saved, i.e. all object are updated in the MOC
+                
+                // Now we need the MOC to save. So we need to wrap it in the perform block
+                self.moc!.performBlock({ () -> Void in
+                    var mocError: NSError?
+                    var saved = self.moc!.save(&mocError)
+                    if (!saved) {
+                        NSLog("\(mocError), \(mocError!.localizedDescription) ")
+                        abort() // Don't use this in production.
+                    }
+                })
+            }
+        })
     }
-    
 }
 
