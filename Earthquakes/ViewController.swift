@@ -47,6 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         self.tbView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "myCell")
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
         moc = appDelegate.managedObjectContext
         
         mainMoc = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
@@ -60,14 +61,18 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         deleteMoc?.parentContext = moc
         
+        if let results = self.fetchData() {
+            self.dataList = results
+            self.tbView.reloadData()
+        }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // ********* Table View To Make It Work
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return self.quakeList.count
@@ -186,7 +191,6 @@ class ViewController: UIViewController, UITableViewDataSource {
                     //    self.tbView.reloadData()
                     // })
                     
-                    
                 }
             })
             
@@ -201,7 +205,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         fetchRequest.entity = quake
         
         let sortDescriptor = NSSortDescriptor(key: "quakeMagnitude", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDescriptor2 = NSSortDescriptor(key: "quakeTitle", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor, sortDescriptor2]
         
         var fetchError: NSError?
         let quakes = self.mainMoc!.executeFetchRequest(fetchRequest, error: &fetchError) as [Quake] // Array of quakes
