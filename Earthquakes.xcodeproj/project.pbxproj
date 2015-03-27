@@ -14,6 +14,8 @@
 		68DE93141AC48DCF0016B6DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68DE93131AC48DCF0016B6DD /* Images.xcassets */; };
 		68DE93171AC48DCF0016B6DD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68DE93151AC48DCF0016B6DD /* LaunchScreen.xib */; };
 		68DE93231AC48DD00016B6DD /* EarthquakesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE93221AC48DD00016B6DD /* EarthquakesTests.swift */; };
+		68DE932D1AC4B5120016B6DD /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE932C1AC4B5120016B6DD /* Location.swift */; };
+		68DE932F1AC4B5120016B6DD /* Quake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE932E1AC4B5120016B6DD /* Quake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		68DE931C1AC48DD00016B6DD /* EarthquakesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthquakesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68DE93211AC48DD00016B6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68DE93221AC48DD00016B6DD /* EarthquakesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesTests.swift; sourceTree = "<group>"; };
+		68DE932C1AC4B5120016B6DD /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		68DE932E1AC4B5120016B6DD /* Quake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				68DE93131AC48DCF0016B6DD /* Images.xcassets */,
 				68DE93151AC48DCF0016B6DD /* LaunchScreen.xib */,
 				68DE930B1AC48DCF0016B6DD /* Earthquakes.xcdatamodeld */,
+				68DE932E1AC4B5120016B6DD /* Quake.swift */,
+				68DE932C1AC4B5120016B6DD /* Location.swift */,
 				68DE93071AC48DCF0016B6DD /* Supporting Files */,
 			);
 			path = Earthquakes;
@@ -217,6 +223,8 @@
 			files = (
 				68DE930F1AC48DCF0016B6DD /* ViewController.swift in Sources */,
 				68DE930D1AC48DCF0016B6DD /* Earthquakes.xcdatamodeld in Sources */,
+				68DE932F1AC4B5120016B6DD /* Quake.swift in Sources */,
+				68DE932D1AC4B5120016B6DD /* Location.swift in Sources */,
 				68DE930A1AC48DCF0016B6DD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

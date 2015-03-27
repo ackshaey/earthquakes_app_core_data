@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Location" representedClassName="Earthquakes.Location" syncable="YES">
+        <attribute name="depth" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="quake" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quake" inverseName="location" inverseEntity="Quake" syncable="YES"/>
+    </entity>
+    <entity name="Quake" representedClassName="Earthquakes.Quake" syncable="YES">
+        <attribute name="quakeDate" attributeType="Date" syncable="YES"/>
+        <attribute name="quakeMagnitude" attributeType="Double" minValueString="0" maxValueString="15" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="quakeTitle" attributeType="String" minValueString="4" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="quake" inverseEntity="Location" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Location" positionX="-9" positionY="164" width="128" height="133"/>
+        <element name="Quake" positionX="-279" positionY="72" width="128" height="103"/>
+    </elements>
 </model>

@@ -88,8 +88,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
-        managedObjectContext.persistentStoreCoordinator = coordinator
+        
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // Here we are saying this MOC will run on the secondary queue.
+        // This is now on the secondary queue since we picked PrivateQueueConType
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        
+        // This will ensure that the block runs on whatever queue the object is on.
+        // We chose &wait so that everything is done before we return. 
+        managedObjectContext.performBlockAndWait({ () -> Void in
+            managedObjectContext.persistentStoreCoordinator = coordinator
+        })
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        // *******
+        
+        
+        
         return managedObjectContext
     }()
 
