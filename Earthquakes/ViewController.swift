@@ -25,7 +25,7 @@ struct Earthquake {
     let location: String
 }
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var urlSession: NSURLSession?
     
@@ -85,6 +85,16 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = (dataList[indexPath.row] as Quake).quakeTitle
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let quake = self.dataList[indexPath.row] as Quake
+        
+        let vc = MapViewController(nibName: "MapViewController", bundle: nil)
+        vc.quake = quake
+        
+        self.showViewController(vc, sender: nil)
+        
     }
     
     @IBOutlet weak var tbView: UITableView!

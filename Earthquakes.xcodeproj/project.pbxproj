@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681DE2991AC4DE4600D813BA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DE2971AC4DE4600D813BA /* MapViewController.swift */; };
+		681DE29A1AC4DE4600D813BA /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681DE2981AC4DE4600D813BA /* MapViewController.xib */; };
+		681DE29C1AC4E16C00D813BA /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681DE29B1AC4E16C00D813BA /* Annotation.swift */; };
 		68DE930A1AC48DCF0016B6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE93091AC48DCF0016B6DD /* AppDelegate.swift */; };
 		68DE930D1AC48DCF0016B6DD /* Earthquakes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68DE930B1AC48DCF0016B6DD /* Earthquakes.xcdatamodeld */; };
 		68DE930F1AC48DCF0016B6DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE930E1AC48DCF0016B6DD /* ViewController.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		681DE2971AC4DE4600D813BA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		681DE2981AC4DE4600D813BA /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		681DE29B1AC4E16C00D813BA /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		68DE93041AC48DCF0016B6DD /* Earthquakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68DE93081AC48DCF0016B6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68DE93091AC48DCF0016B6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 		68DE92FB1AC48DCF0016B6DD = {
 			isa = PBXGroup;
 			children = (
+				681DE29B1AC4E16C00D813BA /* Annotation.swift */,
 				68DE93061AC48DCF0016B6DD /* Earthquakes */,
 				68DE931F1AC48DD00016B6DD /* EarthquakesTests */,
 				68DE93051AC48DCF0016B6DD /* Products */,
@@ -92,6 +99,8 @@
 				68DE932E1AC4B5120016B6DD /* Quake.swift */,
 				68DE932C1AC4B5120016B6DD /* Location.swift */,
 				68DE93071AC48DCF0016B6DD /* Supporting Files */,
+				681DE2971AC4DE4600D813BA /* MapViewController.swift */,
+				681DE2981AC4DE4600D813BA /* MapViewController.xib */,
 			);
 			path = Earthquakes;
 			sourceTree = "<group>";
@@ -204,6 +213,7 @@
 				68DE93121AC48DCF0016B6DD /* Main.storyboard in Resources */,
 				68DE93171AC48DCF0016B6DD /* LaunchScreen.xib in Resources */,
 				68DE93141AC48DCF0016B6DD /* Images.xcassets in Resources */,
+				681DE29A1AC4DE4600D813BA /* MapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,9 +232,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				68DE930F1AC48DCF0016B6DD /* ViewController.swift in Sources */,
+				681DE2991AC4DE4600D813BA /* MapViewController.swift in Sources */,
 				68DE930D1AC48DCF0016B6DD /* Earthquakes.xcdatamodeld in Sources */,
 				68DE932F1AC4B5120016B6DD /* Quake.swift in Sources */,
 				68DE932D1AC4B5120016B6DD /* Location.swift in Sources */,
+				681DE29C1AC4E16C00D813BA /* Annotation.swift in Sources */,
 				68DE930A1AC48DCF0016B6DD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +431,7 @@
 				68DE93281AC48DD00016B6DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68DE93291AC48DD00016B6DD /* Build configuration list for PBXNativeTarget "EarthquakesTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +440,7 @@
 				68DE932B1AC48DD00016B6DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
